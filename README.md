@@ -61,12 +61,11 @@ Open the .env-sample file rename to .env and update the following environment va
 
 ## Step 3: Configure Meraki Network
 
-todo: add how to configure meraki
+[Meraki documentation](https://developer.cisco.com/meraki/captive-portal-api/sign-on-api/)
 
 ## Step 4: Configure Webex Connect
 
-todo: add how to configure Webex Connect
-
+[Webex Connect Documentation](https://help.imiconnect.io/docs/welcome)
 ## Step 5: Start the Services
 
 Run the following command to start the Docker services:
@@ -95,7 +94,11 @@ The Account Manager service handles the management of openldap accounts. It allo
 
 # Webex Connect 
 
-Webex Connect is a CPaaS service. I is responsible for validating the guest identity using whatsapp. 
+[Webex Connect](https://cpaas.webex.com/) is a CPaaS service. It is responsible for validating the guest identity using whatsapp. 
+
+# Meraki
+
+[Meraki](https://meraki.cisco.com/) is a platform responsible for creating and managing Networks. It is responsible for providing the guest Wifi network.
 
 ## Other Supporting Services
 
