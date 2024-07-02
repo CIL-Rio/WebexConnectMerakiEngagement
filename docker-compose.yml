@@ -1,0 +1,100 @@
+version: "3.9"
+services:
+  web:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "8085:80"
+    volumes:
+      - ./splashportal/data:/var/www/html
+      - ./splashportal/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php-fpm
+    environment:
+      - ACCOUNTMANAGER=${ACCOUNTMANAGER}
+    networks:
+      - ldap-network
+  php-fpm:
+    image: php:8-fpm
+    restart: always
+    volumes:
+      - ./splashportal/data:/var/www/html
+    networks:
+      - ldap-network
+    environment:
+      - ACCOUNTMANAGER=${ACCOUNTMANAGER}
+  accountmanager:
+    build: ./accountmanager
+    networks:
+      - ldap-network
+    environment:
+      - LDAP_URL=${LDAP_URL}
+      - LDAP_ROOT=${LDAP_ROOT}
+      - LDAP_ADMIN_USERNAME=${LDAP_ADMIN_USERNAME}
+      - LDAP_ADMIN_PASSWORD=${LDAP_ADMIN_PASSWORD}
+      - LDAP_USERS_OU=${LDAP_USERS_OU}
+      - WEBEXCONNECT_HOOK_URL=${WEBEXCONNECT_HOOK_URL}
+      - WEBEXCONNECT_KEY=${WEBEXCONNECT_KEY}
+    restart: always
+  cert-gen:
+    build: ./cert-gen
+    user: "1000:1000"
+    environment:
+      - CERT_SUBJECT=${CERT_SUBJECT}
+    volumes:
+      - ./certs:/certs
+    networks:
+      - ldap-network
+  openldap:
+    image: bitnami/openldap:latest
+    ports:
+      - "1389:1389" # Non-privileged port for LDAP
+      - "1636:1636" # Non-privileged port for LDAPS
+    environment:
+      - LDAP_ADMIN_USERNAME=${LDAP_ADMIN_USERNAME}
+      - LDAP_ADMIN_PASSWORD=${LDAP_ADMIN_PASSWORD}
+      - LDAP_ROOT=${LDAP_ROOT}
+      - LDAP_ENABLE_TLS=yes
+      # Use this to test meraki conection to ldap server
+      #     - LDAP_USERS=user
+      #     - LDAP_PASSWORDS=userpassword
+      - LDAP_TLS_CERT_FILE=/certs/merakiauth.crt
+      - LDAP_TLS_KEY_FILE=/certs/merakiauth.key
+      - LDAP_TLS_CA_FILE=/certs/merakiauth.crt
+      - LDAP_TLS_VERIFY_CLIENT=try
+      - LDAP_LOGLEVEL=256 # Corresponds to 'debug' in OpenLDAP
+    volumes:
+      - ./certs:/certs
+    networks:
+      - ldap-network
+    restart: unless-stopped
+    depends_on:
+      - cert-gen
+  # postgresql:
+  #   image: docker.io/bitnami/postgresql:latest
+  #   environment:
+  #     - ALLOW_EMPTY_PASSWORD=yes
+  #     - POSTGRESQL_USERNAME=bn_keycloak
+  #     - POSTGRESQL_DATABASE=bitnami_keycloak
+  #   volumes:
+  #     - "postgresql_data:/bitnami/postgresql"
+  #   networks:
+  #     - ldap-network
+  # keycloak:
+  #   image: docker.io/bitnami/keycloak:latest
+  #   ports:
+  #     - "8086:8080"
+  #   environment:
+  #     - KEYCLOAK_CREATE_ADMIN_USER=true
+  #   networks:
+  #     - ldap-network
+  #   depends_on:
+  #     - postgresql
+networks:
+  ldap-network:
+    driver: bridge
+volumes:
+  openldap_data:
+    driver: local
+  # postgresql_data:
+  #   driver: local

@@ -1,0 +1,162 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-image: url("../media/Moonbuck-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.container
+  > .row
+  > .col-lg-12.text-center
+  > .container
+  > .row.justify-content-md-center
+  > .col-sm-6.col-md-6.col-lg-6
+  > .account-wall
+  > .mw-100.align-center {
+  background-color: rgb(109, 23, 23);
+  opacity: 0.8;
+}
+.container > .row > .col-lg-12.text-center > .row > .col-5.col-sm-10 > .mt-5 {
+  text-decoration-color: rgb(255, 255, 255);
+}
+#login > .lead {
+  text-decoration-color: rgb(0, 0, 0);
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-right: 2px;
+  padding-left: 0px;
+}
+.container
+  > .row
+  > .col-lg-12.text-center
+  > .container
+  > .row.justify-content-md-center
+  > .col-sm-6.col-md-6.col-lg-6
+  > .account-wall
+  > .mt-5 {
+  text-decoration-color: rgb(0, 0, 0);
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-top: 5px;
+}
+#login > .form-signin > .form-control {
+  margin-bottom: 15px;
+}
+#login > .form-signin > .form-check > .form-check-label {
+  margin-bottom: 15px;
+}
+
+#submitButton {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: rgb(96, 192, 33);
+}
+#login > .profile-img.img-fluid.rounded-circle {
+  width: 25px;
+  height: 25px;
+}
+#login
+  > .form-signin
+  > .row
+  > .col-sm-2.col-2.col-md-2.col-xl-2.col-lg-2.col-xxl-2
+  > .profile-img.img-fluid.rounded-circle {
+  width: 35px;
+  height: 35px;
+  float: none;
+  display: block;
+  position: relative;
+  top: auto;
+  left: auto;
+  bottom: auto;
+  right: auto;
+  margin-top: 50%;
+  margin-bottom: 50%;
+  margin-right: 50%;
+  margin-left: 50%;
+}
+.container
+  > .row
+  > .col-lg-12.text-center
+  > .container
+  > .row.justify-content-md-center
+  > .col-sm-6.col-md-6.col-lg-6
+  > .account-wall {
+  padding-top: 10px;
+  margin-top: 40px;
+  opacity: 1;
+}
+.container
+  > .row
+  > .col-lg-12.text-center
+  > .container
+  > .row.justify-content-md-center
+  > .col-sm-6.col-md-6.col-lg-6
+  > .account-wall
+  > .mt-1 {
+  padding-right: 1rem;
+  padding-left: 1em;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.account-wall {
+  margin-top: 80px;
+  padding: 40px 0px 20px 0px;
+  background-color: #ffffffe5;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+}
+.profile-img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+#errorMessage {
+  display: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+}
+#errorMessage p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
