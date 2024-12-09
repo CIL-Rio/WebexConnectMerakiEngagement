@@ -16,7 +16,7 @@ In this guide, you will be taken step by step through the process of configuring
 Before proceeding with the setup, make sure you have the following requirements:
 
 - Docker and Docker Compose installed. This machine must be accessible by the AP and by the Guest network.  
-- Meraki network with at least one AP
+- Meraki network with at least one Access Point
 - A Webex Connect account with Whatsapp, If using the sandbox you will only be able to send message to yourself
 
 ## additional
@@ -78,6 +78,17 @@ docker-compose up
 
 Open a web browser and access the splashpage application using your domain name and the configured port (e.g., http://yourdomain.com:8085).
 Verify that the splashpage is working correctly and displays the necessary information.
+
+### Splash Page 
+
+<img src="images/SplashPage.webp" alt="Splash Page" width="250"/>
+<img src="images/SplashPageSuccess.webp" alt="Splash Page Success" width="250"/>
+
+### WhatsApp
+
+<img src="images/WhatsAppConfirmation.webp" alt="WhatsApp Confirmation" width="250"/>
+<img src="images/WhatsAppAuthorized.webp" alt="WhatsApp Authorized" width="250"/>
+<img src="images/WhatsAppEngagement.webp" alt="WhatsApp Engagement" width="250"/>
 
 # Summary of Services
 
